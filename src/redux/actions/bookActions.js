@@ -78,7 +78,7 @@ export const deleteBooks = ( id ) => async (dispatch, getState) =>{
             `https://boostup-bd.onrender.com/api/v1/deleteBookById/${id}`,
             config
         );
-        dispatch({ type: DELETE_BOOK_SUCCESS, payload: data });
+        dispatch({ type: DELETE_BOOK_SUCCESS, payload: data.message });
         Swal.fire
         ({
             icon: 'success',

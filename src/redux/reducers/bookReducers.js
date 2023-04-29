@@ -38,12 +38,12 @@ export const addBooksReducers =
 };
 
 export const deleteBooksReducers =
-    (state = { book: {} }, action) => {
+    (state = {}, action) => {
     switch (action.type) {
         case DELETE_BOOK_REQUEST:
-            return { loading: true, book: {} };
+            return { loading: true, };
         case DELETE_BOOK_SUCCESS:
-            return { loading: false, book: action.payload };
+            return { loading: false, success: action.payload };
         case DELETE_BOOK_FAIL:
             return { loading: false, error: action.payload };
         default:

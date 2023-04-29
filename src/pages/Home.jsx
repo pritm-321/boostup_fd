@@ -16,13 +16,16 @@ const Home = () => {
   const listBooks = useSelector((state) => state.bookList);
   const { loading: loadbook, error: errorbook, books } = listBooks;
 
+  const deleteBook = useSelector((state) => state.deleteBook);
+  const { loading: loaddelete, error: errordelete, success } = deleteBook;
+
   const [userData, setUserdata] = useState([]);
   const [filterdata, setFilterdata] = useState([]);
   const [query, setQuery] = useState("");
 
   useEffect(() => {
     dispatch(listAllBooks());
-  }, [dispatch]);
+  }, [dispatch,success]);
 
   useEffect(() => {
     const getUserdata = async () => {
@@ -37,7 +40,7 @@ const Home = () => {
       // console.log(filterdata);
     };
     getUserdata();
-  }, []);
+  }, [success]);
 
   const handleDelete = (id) =>{
     console.log(id)
