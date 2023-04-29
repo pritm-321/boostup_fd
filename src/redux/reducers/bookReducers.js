@@ -24,10 +24,10 @@ export const listBooksReducers = (state = { books: [] }, action) => {
 };
 
 export const addBooksReducers = 
-    (state = { book: {} }, action) => {
+    (state = { book: [] }, action) => {
     switch (action.type) {
         case ADD_BOOK_REQUEST:
-            return { loading: true, book: {} };
+            return { loading: true, book: [] };
         case ADD_BOOK_SUCCESS:
             return { loading: false, book: action.payload };
         case ADD_BOOK_FAIL:

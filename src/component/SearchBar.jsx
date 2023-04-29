@@ -1,27 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 
+import { useDispatch, useSelector } from "react-redux";
+import { listAllBooks } from "../redux/actions/bookActions";
+
 const Searchdata = () => {
   const [userData, setUserdata] = useState([]);
   const [filterdata, setFilterdata] = useState([]);
   const [query, setQuery] = useState("");
 
+  const dispatch = useDispatch();
+
+  const listBooks = useSelector((state) => state.bookList);
+  const { loading: loadbook, error: errorbook, books } = listBooks;
+
   useEffect(() => {
-    const getUserdata = async () => {
-      const reqData = await fetch("http://localhost/devopsdeveloper/users");
-      const resData = await reqData.json();
-      //console.log(resData);
-      setUserdata(resData);
-      setFilterdata(resData);
-    };
-    getUserdata();
-  }, []);
+    dispatch(listAllBooks());
+    setUserdata(books);
+    setFilterdata(books);
+  }, [dispatch]);
 
   const handlesearch = (event) => {
     const getSearch = event.target.value;
     if (getSearch.length > 0) {
       const searchdata = userData.filter((item) =>
-        item.first_name.toLowerCase().includes(getSearch)
+        item.bookTitle.toLowerCase().includes(getSearch)
       );
       setUserdata(searchdata);
     } else {
@@ -33,23 +36,9 @@ const Searchdata = () => {
   return (
     <React.Fragment>
       <Container>
-        <div className="row mt-3">
-          <div className="col-md-12 mt-3 mb-3">
-            <h3 className="mb-3">Search record Datatable in React Js</h3>
-            <div className="col-md-6">
-              <input
-                type="text"
-                name="name"
-                value={query}
-                className="form-control"
-                onChange={(e) => handlesearch(e)}
-                placeholder="Search..."
-              />
-            </div>
-          </div>
-        </div>
+        
       </Container>
     </React.Fragment>
   );
-}
+};
 export default Searchdata;
