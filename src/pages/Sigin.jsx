@@ -39,6 +39,7 @@ const Signin = () => {
   };
 
   return (
+    <div className="container">
     <div className="Auth-form-container">
       <ToastContainer />
       {loading ? (
@@ -84,6 +85,7 @@ const Signin = () => {
           </div>
         </form>
       )}
+    </div>
     </div>
   );
 };
