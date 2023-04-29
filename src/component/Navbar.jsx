@@ -27,7 +27,7 @@ const NavbarExample = () => {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="/">BoostUp</Navbar.Brand>
+        <Navbar.Brand href="/">BoostUp Digital</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
