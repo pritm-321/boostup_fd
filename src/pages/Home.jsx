@@ -48,7 +48,7 @@ const Home = () => {
   }
 
   const handleSearch = (event) => {
-    const getSearch = event.target.value;
+    const getSearch = event.target.value.toLowerCase();
     if (getSearch.length > 0) {
       const searchdata = userData.filter((item) =>
         item.bookTitle.toLowerCase().includes(getSearch) || item.bookAuthor.toLowerCase().includes(getSearch)
