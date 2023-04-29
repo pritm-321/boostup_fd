@@ -40,7 +40,7 @@ const Home = () => {
       // console.log(filterdata);
     };
     getUserdata();
-  }, [success]);
+  }, []);
 
   const handleDelete = (id) =>{
     console.log(id)
